@@ -11,7 +11,6 @@ export default class Dashboard extends Component<{}, State> {
   };
 
   showAlert = () => alert('hello');
-
   changeName = () => this.setState({ name: '1234' });
 
   render(): React.ReactNode {
