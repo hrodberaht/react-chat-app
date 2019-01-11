@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Button from './shared/Button';
+import Register from './Register/Register';
 
 interface State {
   name: string;
@@ -17,10 +18,7 @@ export default class Dashboard extends Component<{}, State> {
   render(): React.ReactNode {
     return (
       <div>
-        <p>Dashboard</p>
-        <h1>{this.state.name}</h1>
-        <Button onClick={this.changeName} name="Change name" />
-        <Button onClick={this.showAlert} name="ClickMe" className="btn btn-primary" />
+        <Register />
       </div>
     );
   }
