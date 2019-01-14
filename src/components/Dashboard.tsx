@@ -1,21 +1,17 @@
 import React, { Component } from 'react';
-import Button from './shared/Button';
 import Register from './Register/Register';
 
 interface State {
-  name: string;
+  isLogged: boolean;
 }
 
 export default class Dashboard extends Component<{}, State> {
   readonly state = {
-    name: 'string'
+    isLogged: true
   };
 
-  showAlert = () => alert('hello');
-
-  changeName = () => this.setState({ name: '1234' });
-
   render(): React.ReactNode {
+    if (this.state.isLogged) return <h1>Chat</h1>;
     return (
       <div>
         <Register />
