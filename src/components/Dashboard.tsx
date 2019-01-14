@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import Register from './Register/Register';
 import { connect } from 'react-redux';
+import Register from './Register/Register';
 import { StateInterface, UserInterface } from '../store/users/reducer';
 import { getUsers } from '../store/users/selectors';
+import ChatWindow from './Chat/ChatWindow';
 
 interface State {
   isLogged: boolean;
@@ -14,7 +15,7 @@ export class Dashboard extends Component<{ users: Array<UserInterface> }, State>
   };
 
   render(): React.ReactNode {
-    if (this.state.isLogged) return <h1>Chat</h1>;
+    if (this.state.isLogged) return <ChatWindow />;
     return (
       <div>
         <Register />

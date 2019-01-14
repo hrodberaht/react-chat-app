@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Input } from '../shared/input';
+import { Input } from '../shared/Input';
 import Button from '../shared/Button';
 
 export default class Register extends Component<{}, {}> {
