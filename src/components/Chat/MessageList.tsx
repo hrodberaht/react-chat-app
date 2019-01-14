@@ -11,8 +11,8 @@ interface MessagesInterface {
 
 const MessageList: FC<MessagesInterface> = ({ messages }) => (
   <div>
-    {messages.map(message => (
-      <div>
+    {messages.map((message, index) => (
+      <div key={index}>
         <p>{message.user}</p>
         <p>{message.text}</p>
       </div>
