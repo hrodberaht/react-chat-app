@@ -1,8 +1,10 @@
 import React, { Component, ChangeEvent } from 'react';
+import getMessagesFromSocketIO from '../../shared/getMessagesFromSocketIO';
 import ChatTitle from './ChatTitle';
 import MessageList, { MessageInterface } from './MessageList';
 import { Input } from '../shared/Input';
 import Button from '../shared/Button';
+import sendMessageToSocketIO from '../../shared/sendMessageToSocketIO';
 
 interface State {
   message: MessageInterface;
@@ -10,6 +12,12 @@ interface State {
 }
 
 export default class ChatWindow extends Component<{}, State> {
+  componentDidMount() {
+    getMessagesFromSocketIO((err: any, messages: Array<MessageInterface>) =>
+      this.setState({ messages })
+    );
+  }
+
   initialMessage = {
     user: '',
     text: ''
@@ -17,14 +25,12 @@ export default class ChatWindow extends Component<{}, State> {
 
   readonly state = {
     message: this.initialMessage,
-    messages: [{ user: 'john', text: '1234' }, { user: 'mark', text: '4321' }]
+    messages: []
   };
 
   handleClick = () => {
-    this.setState(state => ({
-      messages: [...state.messages, state.message],
-      message: this.initialMessage
-    }));
+    sendMessageToSocketIO(this.state.message.text);
+    this.setState({ message: this.initialMessage });
   };
 
   handleChange = (e: any) => {
