@@ -1,30 +1,23 @@
 import React, { Component } from 'react';
+import Register from './Register/Register';
 import { connect } from 'react-redux';
-import Button from './shared/Button';
 import { StateInterface, UserInterface } from '../store/users/reducer';
 import { getUsers } from '../store/users/selectors';
 
 interface State {
-  name: string;
+  isLogged: boolean;
 }
 
 export class Dashboard extends Component<{ users: Array<UserInterface> }, State> {
   readonly state = {
-    name: 'string'
+    isLogged: true
   };
 
-  showAlert = () => alert('hello');
-
-  changeName = () => this.setState({ name: '1234' });
-
   render(): React.ReactNode {
+    if (this.state.isLogged) return <h1>Chat</h1>;
     return (
       <div>
-        <p>
-          User:
-          {this.props.users[0].name}
-        </p>
-        <Button onClick={this.changeName} name="Change name" />
+        <Register />
       </div>
     );
   }
