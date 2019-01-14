@@ -1,12 +1,12 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import Dashboard from './components/Dashboard';
 
 class App extends Component {
   render(): React.ReactNode {
     return (
-      <Fragment>
+      <div>
         <Dashboard />
-      </Fragment>
+      </div>
     );
   }
 }
